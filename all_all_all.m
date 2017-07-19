@@ -7,4 +7,6 @@
 % semsemsems('AAP hi.csv', 120); % AAp high
 % semsemsems('AAP lo.csv', 70); % AAp low (didn't collect after for 75min)
 % semsemsems('HO hi bad.csv', 6); % HO high (accidentally left Sham on, started collecting data late)
-semsemsems('HO hi.csv', 78, 1.5); % HO high (mwah beautiful darling)
+% semsemsems('HO hi.csv', 78, 1.5); % HO high (mwah beautiful darling)
+% semsemsems('HO lo.csv', 88, 1.5);   
+semsemsems('SHAM hi.csv', 70, 1.5);   
