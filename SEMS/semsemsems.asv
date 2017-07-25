@@ -1,4 +1,4 @@
-function [k_UFP, k_mean, smoothBins, smoothK, smoothPRs] = semsemsems(name, b4filt, scantime)
+function [k_UFP, k_mean] = semsemsems(name, b4filt, scantime)
     %Inputs: name = SEMS file name
             %b4filt = time (minutes) before filter is turned on
             %scantime = how long one scan takes, in minutes
@@ -63,7 +63,7 @@ function [k_UFP, k_mean, smoothBins, smoothK, smoothPRs] = semsemsems(name, b4fi
     %waterplot(times, bins, conc);
     
     %get smoothed curves by downsampling k values and PR30
-    [smoothBins, smoothK, smoothPRs] = smoother(bins, yolo(2:end,1), yolo(2:end,3));
+    smoother()
     
     k_mean = mean(yolo(2:end,1));
     nanFinder = isnan(yolo(:,1));
