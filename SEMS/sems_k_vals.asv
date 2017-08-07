@@ -18,9 +18,8 @@ bins = Filt(1:runs,2:end-4);
 
 %calculate k vals
 k_bins = find_1_k(cut_times, ufps); %first entry of result will be ufp k value
-k_bins = [k_bins; find_1_k(cut_times, pm1);];
-k_bins = [k_bins; find_1_k(cut_times, pm1_1);];
-k_bins = [k_bins; find_1_k(cut_times, pm3);];
+k_bins = [k_bins find_1_k(cut_times, pm1);];
+k_bins = [k_bins find_1_k(cut_times, pm1);];
 [l w] = size(bins);
 for i=1:w
     new_k = find_1_k(cut_times, bins(:,i));

@@ -1,0 +1,66 @@
+
+[bins, C_AAP_hi1] = initC('AAP hi.csv', 120, 1.5); % AAp high
+[~, C_AAP_hi2] = initC('AAP hi2.csv', 55, 1.5);
+
+[~, C_AAP_lo1] = initC('AAP lo.csv', 70, 1.5); % AAp low (didn't collect after for 75min)
+[~, C_AAP_lo2] = initC('AAP lo2.csv', 55, 1.5);
+
+% initC('HO hi bad.csv', 6); % HO high (accidentally left Sham on, started collecting data late)
+[~, C_HO_hi1] =  initC('HO hi.csv', 78, 1.5); % HO high (mwah beautiful darling)
+[~, C_HO_hi2] =  initC('HO hi2.csv', 78, 1.5); % HO high (mwah beautiful darling)
+
+[~, C_HO_lo1] = initC('HO lo.csv', 88, 1.5);
+[~, C_HO_lo2] = initC('HO lo2.csv', 50, 1.5);
+
+[~, C_SHAM_hi1] = initC('SHAM hi.csv', 45, 1.5);
+[~, C_SHAM_hi2] = initC('SHAM hi2.csv', 70, 1.5);
+
+[~, C_SHAM_lo1] = initC('SHAM lo.csv', 70, 1.5);
+[~, C_SHAM_lo2] = initC('SHAM lo2.csv', 55, 1.5);
+
+[~, C_AANP_hi1] = initC('AANP hi.csv', 80, 1.5);
+[~, C_AANP_hi2] = initC('AANP hi2.csv', 55, 1.5);
+
+[~, C_AANP_lo1] = initC('AANP lo2.csv', 60, 1.5);
+[~, C_AANP_lo2] = initC('AANP lo3.csv', 45, 1.5);
+
+[~, C_NF] = initC('no filter.csv', 75, 1.5);
+
+[~, C_IQ_hi1] = initC('IQ hi.csv', 50, 1.5);
+[~, C_IQ_hi2] = initC('IQ hi2.csv', 50, 1.5);
+
+[~, C_IQ_lo1] = initC('IQ lo0.csv', 50, 1.5);
+[~, C_IQ_lo2] = initC('IQ lo2.csv', 50, 1.5);
+
+[~, C_HEX_hi1] = initC('HEX hi.csv', 35, 1.5);
+[~, C_HEX_hi2] = initC('HEX hi2.csv', 75, 1.5);
+
+[~, C_HEX_lo1] = initC('HEX lo.csv', 75, 1.5);
+[~, C_HEX_lo2] = initC('HEX lo2.csv', 75, 1.5);
+
+C_AVG = mean([C_HEX_lo1; C_HEX_lo2; C_HEX_hi1; C_HEX_hi2; ...
+    C_HO_lo1; C_HO_lo2; C_HO_hi1; C_HO_hi2; ...
+    C_SHAM_lo1; C_SHAM_lo2; C_SHAM_hi1; C_SHAM_hi2; ...
+    C_IQ_lo1; C_IQ_lo2; C_IQ_hi1; C_IQ_hi2; ...
+    C_AAP_lo1; C_AAP_lo2; C_AAP_hi1; C_AAP_hi2; ...
+    C_AANP_lo1; C_AANP_lo2; C_AANP_hi1; C_AANP_hi2; ...
+    C_NF; ...
+    ]);
+
+figure('rend', 'painters', 'pos', [10 10 700 550])
+hold on
+plot(bins, C_AVG, 'LineWidth', 2, 'Color', 'k');
+plot(bins, C_AAP_hi1, bins, C_AAP_hi2, bins, C_AAP_lo1, bins, C_AAP_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_AANP_hi1, bins, C_AANP_hi2, bins, C_AANP_lo1, bins, C_AANP_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_HEX_hi1, bins, C_HEX_hi2, bins, C_HEX_lo1, bins, C_HEX_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_HO_hi1, bins, C_HO_hi2, bins, C_HO_lo1, bins, C_HO_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_SHAM_hi1, bins, C_SHAM_hi2, bins, C_SHAM_lo1, bins, C_SHAM_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_NF, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_IQ_hi1, bins, C_IQ_hi2, bins, C_IQ_lo1, bins, C_IQ_lo2, 'LineWidth', .5, 'Color', [.8 .8 .8]);
+plot(bins, C_AVG, 'LineWidth', 2, 'Color', 'k');
+set(gca,'xscale','log')
+axis([5, 1000, 0, 1.00])
+xlabel('Particle diameter', 'FontSize', 14);
+ylabel('Normalized Concentration', 'FontSize', 14);
+legend('Average', 'Individual Trials');
+hold off
